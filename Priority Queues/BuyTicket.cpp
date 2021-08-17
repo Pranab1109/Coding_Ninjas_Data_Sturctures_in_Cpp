@@ -32,7 +32,33 @@ Sample Output 2 :
 
 /************************************************ SOLUTION **************************************************************************/
 
-
+#include <queue>
+int buyTicket(int *arr, int n, int k) {
+    // Write your code here
+    queue<int> q;
+    priority_queue<int> pq;
+    int t=0;
+    for(int i=0;i<n;i++){
+        q.push(i);
+        pq.push(arr[i]);
+    }
+    while(!q.empty()){
+        if(arr[q.front()]==pq.top()){
+           t++;
+            if(q.front()==k)break;
+           q.pop();
+           pq.pop();
+        }
+        else{
+            int x = q.front();
+            q.pop();
+            q.push(x);
+        }
+    }
+    return t;
+}                                
+                                   
+/*
 #include <queue>
 int buyTicket (int *input, int n, int k){
     queue<int> q;
@@ -68,7 +94,7 @@ int buyTicket (int *input, int n, int k){
     }
     return count;
 }
-
+*/
 
 
 
